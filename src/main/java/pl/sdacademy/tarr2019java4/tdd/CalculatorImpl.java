@@ -7,6 +7,12 @@ package pl.sdacademy.tarr2019java4.tdd;
  **/
 public class CalculatorImpl implements Calculator {
 
+    public CalculatorImpl() {
+        clear();
+    }
+
+    private String display;
+
     @Override
     public void pressNumber(int number) {
 
@@ -14,7 +20,7 @@ public class CalculatorImpl implements Calculator {
 
     @Override
     public String display() {
-        return null;
+        return display;
     }
 
     @Override
@@ -39,6 +45,6 @@ public class CalculatorImpl implements Calculator {
 
     @Override
     public void clear() {
-
+        display = "";
     }
 }
