@@ -37,7 +37,7 @@ public class CalculatorParametrizedJUnitParamsMethodTest {
         assertEquals(message,expected, calc.display());
     }
 
-    private Object[] parametersToTestAdd() {
+    private Object[] parametersToTestAdd() {// użyte do testów parametryzacyjnych
         return new Object[] {
                 new Object[] { 1, 2, 3 },
                 new Object[] { 2, 2, 4 },
