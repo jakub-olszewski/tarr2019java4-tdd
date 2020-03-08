@@ -28,7 +28,7 @@ public class CalculatorParametersConstructorAddTest {
     }
 
     //statyczna metoda z danymi do testów
-    @Parameterized.Parameters(name = "Test [index]:  {0} + {1} = {2}")
+    @Parameterized.Parameters(name = "Test {index}:  {0} + {1} = {2}")
     public static Collection<Object> data(){
         return Arrays.asList(new Object[][]{{1,2,"3"},{2,3,"5"},{7,3,"10"}});
     }
