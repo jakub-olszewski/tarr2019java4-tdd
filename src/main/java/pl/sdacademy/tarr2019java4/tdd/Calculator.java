@@ -52,4 +52,6 @@ public interface Calculator {
      * Metoda czyści zawartość wyświetlacza
      */
     void clear();
+
+    void isEven(int number);
 }

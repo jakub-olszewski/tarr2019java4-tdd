@@ -18,6 +18,14 @@ public class App {
     //psvm + tab
     public static void main(String[] args) {
 
+        String a = "3";
+        String b = "4";
+
+        int c = 5;
+        int d = 6;
+
+        System.out.println(a+b);// złączenie napisów
+        System.out.println(c+d);
 
     }
 

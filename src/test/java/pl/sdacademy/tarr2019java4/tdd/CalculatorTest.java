@@ -1,7 +1,9 @@
 package pl.sdacademy.tarr2019java4.tdd;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
@@ -75,7 +77,7 @@ public class CalculatorTest {
 
         //then
         String resultDisplay = calc.display();
-        String expected = "2";
+        String expected = "4";
         assertEquals(expected,resultDisplay);
     }
 
@@ -147,4 +149,53 @@ public class CalculatorTest {
         assertEquals("10",calc.display());
 
     }
+
+    // ponizej dwa sposoby testowania wyjatków
+    @Test
+    public void shouldDisplayErrorWhenDivByZeroTest(){
+
+        //when
+        try {
+            calc.div(81, 0);
+        }catch(Exception e){
+            //then
+            assertTrue(e instanceof IllegalArgumentException);
+            assertTrue(e.getMessage().equals("Nie dziel przez zero"));
+        }
+    }
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
+    @Test
+    public void shouldDisplayRuleErrorWhenDivByZeroTest(){
+
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("Nie dziel przez zero");
+
+        calc.div(2,0);
+    }
+
+    @Test
+    public void isEvenFalseTest(){
+        //when
+        calc.isEven(81);
+
+        //then
+        String resultDisplay = calc.display();
+        String expected = "false";
+        assertEquals(expected,resultDisplay);
+    }
+
+    @Test
+    public void isEvenTrueTest(){
+        //when
+        calc.isEven(2);
+
+        //then
+        String resultDisplay = calc.display();
+        String expected = "true";
+        assertEquals(expected,resultDisplay);
+    }
+
 }

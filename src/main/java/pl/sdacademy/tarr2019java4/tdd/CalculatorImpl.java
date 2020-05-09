@@ -59,6 +59,11 @@ public class CalculatorImpl implements Calculator {
     }
 
     @Override
+    public void isEven(int number) {
+        pressNumber(number%2==0);
+    }
+
+    @Override
     public void multi(int numberA, int numberB) {
         pressNumber(numberA*numberB);
     }
