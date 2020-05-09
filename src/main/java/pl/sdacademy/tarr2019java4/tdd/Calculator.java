@@ -12,7 +12,7 @@ public interface Calculator {
      * Metoda odpowiedzialna za wcisniecie przycisku z cyfrą
      * @param number
      */
-    void pressNumber(int number);
+    void pressNumber(Object number);
 
     /**
      * Metoda odpowiedzialna za pobranie zawartości wyświetlacza
