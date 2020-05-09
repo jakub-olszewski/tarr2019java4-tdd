@@ -28,7 +28,7 @@ public class CalculatorParametrizedJUnitParamsCSVTest {
         //then
         String message = String.format("Error %d + %d != %s becouse is equal %d",
                 numberA,numberB,calc.display(),numberA+numberB);
-        assertEquals(expected, calc.display(),message);
+        assertEquals(message, expected, calc.display());
     }
 
     @Test
@@ -44,7 +44,7 @@ public class CalculatorParametrizedJUnitParamsCSVTest {
         //then
         String message = String.format("Error %d * %d != %s becouse is equal %d",
                 numberA,numberB,calc.display(),numberA*numberB);
-        assertEquals(expected, calc.display(),message);
+        assertEquals(message, expected, calc.display());
     }
 
     @Test
@@ -60,6 +60,6 @@ public class CalculatorParametrizedJUnitParamsCSVTest {
         //then
         String message = String.format("Error %d / %d != %s becouse is equal %d",
                 numberA,numberB,calc.display(),numberA/numberB);
-        assertEquals(expected, calc.display(),message);
+        assertEquals(message,expected, calc.display());
     }
 }
