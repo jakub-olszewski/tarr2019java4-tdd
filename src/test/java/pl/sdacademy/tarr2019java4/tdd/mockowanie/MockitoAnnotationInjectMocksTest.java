@@ -1,12 +1,16 @@
 package pl.sdacademy.tarr2019java4.tdd.mockowanie;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 /**
  * @author : Jakub Olszewski [http://github.com/jakub-olszewski]
@@ -53,5 +57,16 @@ public class MockitoAnnotationInjectMocksTest {
         public String getTranslation(String word){
             return wordMap.get(word);
         }
+    }
+
+    @Test
+    public void whenUseInjectMocksAnnotationTest(){
+        // jak ma działać wordMap - mockowanie
+        when(wordMap.get("Help")).thenReturn("Pomocy");
+        when(wordMap.get("Programmer")).thenReturn("Programista");
+
+        // weryfikacja działania MyDictionary ze wstrzykniętymi słowami
+        assertEquals("Pomocy",dic.getTranslation("Help"));
+        assertEquals("Programista",dic.getTranslation("Programmer"));
     }
 }
