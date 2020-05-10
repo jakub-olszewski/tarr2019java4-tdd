@@ -6,9 +6,11 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 /**
@@ -23,7 +25,7 @@ public class MockitoAnnotationMockTest {
      * nie zainicjalizowana przyszla atrapa
      */
     @Mock
-    List<String> mockedList;
+    List<String> mockedList;// deklaracja listy zamockowanej
 
     @Before
     public void before(){
@@ -59,5 +61,18 @@ public class MockitoAnnotationMockTest {
 
         // asercje czy size jest równy 2020
         assertEquals(mockedList.size(),2020);
+    }
+
+    @Test
+    public void whenUseMockAnnotationMockList4(){
+        // mockedList - polem w klasie
+        // przez co jest widoczne w każdej metodzie/teście
+        List onlyHereMockList = mock(ArrayList.class);
+
+        onlyHereMockList.add("one");
+        verify(onlyHereMockList).add("one");
+
+        Mockito.when(onlyHereMockList.size()).thenReturn(1);// powiedzielismy atrapie ze ma rozmiar 1
+        assertEquals(1,onlyHereMockList.size());
     }
 }
