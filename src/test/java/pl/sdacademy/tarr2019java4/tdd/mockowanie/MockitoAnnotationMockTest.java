@@ -5,15 +5,14 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import pl.sdacademy.tarr2019java4.tdd.Calculator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 /**
  * @author : Jakub Olszewski [http://github.com/jakub-olszewski]
@@ -50,7 +49,7 @@ public class MockitoAnnotationMockTest {
         verify(mockedList).add("one");
         //verify(mockedList).add("two");
 
-        Mockito.when(mockedList.size()).thenReturn(1);
+        when(mockedList.size()).thenReturn(1);
         assertEquals(1,mockedList.size());
     }
 
@@ -59,7 +58,7 @@ public class MockitoAnnotationMockTest {
         //mockedList.add("one");// dodajemy tylko jedna wartosc
 
         // kiedy pytasz mockedList o size zwróć 2020
-        Mockito.when(mockedList.size()).thenReturn(2020);
+        when(mockedList.size()).thenReturn(2020);
 
         // asercje czy size jest równy 2020
         assertEquals(mockedList.size(),2020);
@@ -74,7 +73,7 @@ public class MockitoAnnotationMockTest {
         onlyHereMockList.add("one");
         verify(onlyHereMockList).add("one");
 
-        Mockito.when(onlyHereMockList.size()).thenReturn(1);// powiedzielismy atrapie ze ma rozmiar 1
+        when(onlyHereMockList.size()).thenReturn(1);// powiedzielismy atrapie ze ma rozmiar 1
         assertEquals(1,onlyHereMockList.size());
     }
 
@@ -97,15 +96,16 @@ public class MockitoAnnotationMockTest {
     @Test
     public void calculatorMockitoTest(){
         // zdefiniować atrape Calculator
-
+        Calculator calc = mock(Calculator.class);
         // atrapa kalkulatora wyswietlala 2020
         // zamockować metodę display()
-
+        when(calc.display()).thenReturn("2020");
         // sout i wypisać display()
-
+        System.out.println(calc.display());
         // zweryfikuj czy metoda display wykonala się tylko raz
-
+        verify(calc, times(1)).display();
         // zweryfikuj używając metody never() czy metoda pressNumber()
         // nigdy się nie wykonała
+        verify(calc, never()).pressNumber(any(Object.class));
     }
 }
