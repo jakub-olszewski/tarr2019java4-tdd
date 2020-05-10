@@ -6,6 +6,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import pl.sdacademy.tarr2019java4.tdd.Calculator;
 
 import java.util.List;
 
@@ -66,14 +67,19 @@ public class MockitoAnnotationCaptorTest {
     @Test
     public void whenUseCaptorAnnotationCalcTest(){
         // inicjalizacja mock Calculatora
+        Calculator calc = mock(Calculator.class);
 
         // konfiguracja przechwytywacz
+        ArgumentCaptor<Object> argumentCaptor = ArgumentCaptor.forClass(Object.class);
 
         // wywołanie pressNumber()
+        calc.pressNumber(1);
 
         // przechwycamy element
+        verify(calc).pressNumber(argumentCaptor.capture());
 
         // pobieramy i sprawdzamy wartość
+        assertEquals(1,argumentCaptor.getValue());
 
     }
 
