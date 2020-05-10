@@ -10,6 +10,7 @@ import org.mockito.MockitoAnnotations;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 /**
@@ -38,8 +39,42 @@ public class MockitoAnnotationCaptorTest {
         // konfiguracja przechwytywacz
         verify(mockedListObject).add(argumentCaptor.capture());
 
+        // getValue() zwróć co przechwyciłeś
         assertEquals(argumentCaptor.getValue(),"one");
     }
 
+    @Test
+    public void whenUseCaptorAnnotationInMethodTest(){
+        // inicjalizacja mock listy
+        List mockListHere = mock(List.class);
+
+        // konfiguracja przechwytywacz
+        ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
+
+        mockListHere.add("two");
+
+        // przechwycamy element
+        verify(mockListHere).add(argumentCaptor.capture());
+
+        // pobieramy i sprawdzamy wartość
+        assertEquals("two",argumentCaptor.getValue());
+    }
+
+    /**
+     * Zadanie!
+     */
+    @Test
+    public void whenUseCaptorAnnotationCalcTest(){
+        // inicjalizacja mock Calculatora
+
+        // konfiguracja przechwytywacz
+
+        // wywołanie pressNumber()
+
+        // przechwycamy element
+
+        // pobieramy i sprawdzamy wartość
+
+    }
 
 }
