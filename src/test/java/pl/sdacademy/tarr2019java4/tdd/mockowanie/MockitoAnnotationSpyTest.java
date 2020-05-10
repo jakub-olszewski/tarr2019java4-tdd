@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * @author : Jakub Olszewski [http://github.com/jakub-olszewski]
@@ -38,10 +37,17 @@ public class MockitoAnnotationSpyTest {
         when(spyList.size()).thenReturn(2020);
         assertEquals(2020, spyList.size());
     }
-    
+
     @Test
     public void whenUseSpyAnnotatationInjectMethodTest(){
         // częsciowa atrapa spy widoczna tylko w tej metodzie
         List<String> spyListOnlyHere = spy(new ArrayList<String>());
+
+        spyListOnlyHere.add("one");
+        spyListOnlyHere.add("two");
+
+        assertEquals(2,spyListOnlyHere.size());
+
+        verify(spyListOnlyHere,times(2)).add(anyString());
     }
 }
