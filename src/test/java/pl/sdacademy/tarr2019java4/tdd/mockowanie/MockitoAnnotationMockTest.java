@@ -54,7 +54,10 @@ public class MockitoAnnotationMockTest {
     public void whenUseMockAnnotationMockInject3(){
         //mockedList.add("one");// dodajemy tylko jedna wartosc
 
+        // kiedy pytasz mockedList o size zwróć 2020
         Mockito.when(mockedList.size()).thenReturn(2020);
+
+        // asercje czy size jest równy 2020
         assertEquals(mockedList.size(),2020);
     }
 }
