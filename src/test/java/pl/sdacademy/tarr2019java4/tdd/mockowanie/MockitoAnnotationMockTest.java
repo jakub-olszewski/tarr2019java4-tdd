@@ -90,4 +90,22 @@ public class MockitoAnnotationMockTest {
         // weryfikujemy czy "one" został dodany tylko raz
         verify(mockedList, times(1)).add("one");
     }
+
+    /**
+     * Zadanie!
+     */
+    @Test
+    public void calculatorMockitoTest(){
+        // zdefiniować atrape Calculator
+
+        // atrapa kalkulatora wyswietlala 2020
+        // zamockować metodę display()
+
+        // sout i wypisać display()
+
+        // zweryfikuj czy metoda display wykonala się tylko raz
+
+        // zweryfikuj używając metody never() czy metoda pressNumber()
+        // nigdy się nie wykonała
+    }
 }
