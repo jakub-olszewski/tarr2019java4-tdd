@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 /**
@@ -74,5 +76,18 @@ public class MockitoAnnotationMockTest {
 
         Mockito.when(onlyHereMockList.size()).thenReturn(1);// powiedzielismy atrapie ze ma rozmiar 1
         assertEquals(1,onlyHereMockList.size());
+    }
+
+    @Test
+    public void  addThreeTimesElementToList(){
+        mockedList.add("one");
+        mockedList.add("two");
+        mockedList.add("three");
+
+        // weryfikujemy czy do listy dodaliśmy jakiś anyString 3 razy
+        verify(mockedList, times(3)).add(anyString());
+
+        // weryfikujemy czy "one" został dodany tylko raz
+        verify(mockedList, times(1)).add("one");
     }
 }
